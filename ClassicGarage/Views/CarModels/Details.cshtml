@@ -1,0 +1,139 @@
+﻿@model ClassicGarage.Models.CarModels
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CarModels</h4>
+    <hr />
+    <p><b>Dane pojazdu:  </b></p>
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.Picture)" alt="" style="width:200px; height:200px;" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesAmount)
+        </dd>
+
+        </hr>
+        <br />
+        <p><b>Dane właściciela:</b> </p>
+        <dl class="dl-horizontal">
+
+            <dt>
+                Imie:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Owner.FirstName)
+            </dd>
+
+            <dt>
+                Nazwisko:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Owner.LastName)
+            </dd>
+
+            <dt>
+                Numer telefonu:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Owner.PhoneNo)
+            </dd>
+
+            <dt>
+                E-mail:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Owner.Email)
+            </dd>
+
+        </dl>
+</div>
+
+
+<p>    
+    @Html.ActionLink("Back to List", "Index")
+</p>

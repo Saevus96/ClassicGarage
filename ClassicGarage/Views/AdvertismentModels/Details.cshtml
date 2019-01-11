@@ -1,0 +1,122 @@
+﻿@model ClassicGarage.Models.AdvertismentModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdvertismentModels</h4>
+    <hr />
+    <p>Dane ogłoszenia:</p>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+    </dl>
+    <hr />
+    <p>Dane Pojazdu:</p>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Picture)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.Car.Picture)" alt="" style="width:200px; height:200px;" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Year)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.PurchaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.PurchaseDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.SalesDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.SalesDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.SalesAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.SalesAmount)
+        </dd>
+    </dl>
+    <hr />
+    <p>Dane Sprzedawcy:</p>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Owner.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Owner.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Owner.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Owner.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Owner.PhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Owner.PhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Owner.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Owner.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "Index")
+</p>

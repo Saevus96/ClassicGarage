@@ -1,0 +1,115 @@
+﻿@model IEnumerable<ClassicGarage.Models.AdvertismentModels>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Ogłoszenia";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Dodaj nowe ogloszenie", "Create")
+    }
+    else
+    {
+
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.SalesAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Owner)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Active == true)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.SalesAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Owner.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+
+            @if (item.Car.Owner.Email == User.Identity.GetUserName())
+            {
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Opcje
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Edit", "Edit", new { id = item.ID })</li>
+                            <li>@Html.ActionLink("Details", "Details", new { id = item.ID })</li>
+                            <li>@Html.ActionLink("Delete", "Delete", new { id = item.ID })</li>
+                            <li> @Html.ActionLink("Przeprowadzone Naprawy", "Naprawy", "CarModels", new { id = item.CarId }, null)</li>
+                            <li>
+                                @Html.ActionLink("Czesci", "Czesci", "CarModels", new { id = item.CarId }, null)
+                            </li>
+
+                        </ul>
+                    </div>
+                </td>
+            }
+            else
+            {
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Opcje
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Details", "Details", new { id = item.ID })</li>
+                            <li> @Html.ActionLink("Przeprowadzone Naprawy", "Naprawy", "CarModels", new { id = item.CarId }, null)</li>
+                            <li>
+                                @Html.ActionLink("Czesci", "Czesci", "CarModels", new { id = item.CarId }, null)
+                            </li>
+
+                        </ul>
+                    </div>
+                </td>
+            }
+
+        </tr>
+        }    
+    }
+
+</table>

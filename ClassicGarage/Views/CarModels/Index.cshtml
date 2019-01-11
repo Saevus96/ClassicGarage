@@ -1,0 +1,130 @@
+﻿@model IEnumerable<ClassicGarage.Models.CarModels>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Wszystkie pojazdy w bazie</h2>
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Dodaj nowy pojazd", "Create")
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesAmount)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Content(item.Picture)" alt="" style="width:200px; height:200px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesAmount)
+            </td>
+
+
+            @if (item.Owner.Email == User.Identity.GetUserName())
+            {
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Opcje
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Edit", "Edit", new { id = item.ID })</li>
+                            <li>@Html.ActionLink("Details", "Details", new { id = item.ID })</li>
+                            <li>@Html.ActionLink("Delete", "Delete", new { id = item.ID })</li>
+                            <li> @Html.ActionLink("Przeprowadzone Naprawy", "Naprawy", new { id = item.ID })</li>
+                            <li> @Html.ActionLink("Czesci", "Czesci", new { id = item.ID })</li>
+                        </ul>
+                    </div>
+                </td>
+            }
+            else
+            {
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Opcje
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Details", "Details", new { id = item.ID })</li>
+                            <li> @Html.ActionLink("Przeprowadzone Naprawy", "Naprawy", new { id = item.ID })</li>
+                            <li> @Html.ActionLink("Czesci", "Czesci", new { id = item.ID })</li>
+
+                        </ul>
+                    </div>
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Wróć do strony głównej", "Index", "Home")
+</p>
+
+
